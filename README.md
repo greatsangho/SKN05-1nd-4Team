@@ -44,7 +44,7 @@
   
 **4. ERD**
    
-  ![image](https://github.com/user-attachments/assets/8bfb1b61-dc31-435f-8dbf-b89b3ae335b7)
+ ![erd](https://github.com/user-attachments/assets/4ad68f85-5e44-4dbd-9c40-53b4c31817f4)
 
    
  
