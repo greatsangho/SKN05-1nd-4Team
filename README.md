@@ -412,13 +412,6 @@ Insert_data(sum_dict, 'year_kind_sum','', database_name, password)
     67  16  3    138025
     
     [68 rows x 3 columns]
-    
-
-
-```python
-```
-
-
 
 
 **FAQ**
