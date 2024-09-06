@@ -22,19 +22,24 @@
   3) 적절한 작업 분배 및 지속적인 커뮤니케이션을 통한 협업 수행 능력 향상
   
 3. 기술 스택
-   - 파이썬, MySQL, Streamlit
+
+   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
+   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+   
  
-4. WBS
+5. WBS
  
-5. 요구사항 명세서
+6. 요구사항 명세서
  
-6. ERD
+7. ERD
+   ![화면 캡처 2024-09-06 103022](https://github.com/user-attachments/assets/6cc28547-be58-405b-bdda-ce84532d0fb8)
+   
+ 
+8. 주요 프로시저
+ 
+9. 수행결과(테스트/시연 페이지)
    - 작성 필요
  
-7. 주요 프로시저
- 
-8. 수행결과(테스트/시연 페이지)
-   - 작성 필요
- 
-9. 한 줄 회고
+10. 한 줄 회고
     - 작성 필요
