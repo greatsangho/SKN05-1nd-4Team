@@ -432,7 +432,7 @@ df
 
 
 
-```python
+
 from sqlalchemy import create_engine
 username = 'root'
 password = '1234'
@@ -444,9 +444,9 @@ engine = create_engine(f'mysql+pymysql://{username}:{password}@{host}/{database}
 df.to_sql('qna_che', con=engine, if_exists='append', index=False)
 
 engine.dispose()
-```
 
 
+```python
 **조회시스템**
 
 import streamlit as st
@@ -535,8 +535,7 @@ if st.button("Search"):
         st.dataframe(result)  # 결과를 테이블 형태로 출력
     else:
         st.write("No results found.")
-
-
+```
  
 **6. 수행결과(테스트/시연 페이지)**
     
