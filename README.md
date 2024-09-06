@@ -16,9 +16,9 @@ row, columns
  
 - 팀원
 
-|이미지|이미지|![KakaoTalk_20240906_121451675](https://github.com/user-attachments/assets/9019c838-54bf-4ece-b27d-0e4917bd4001)|이미지|이미지|
-|:---:|:---:|:---:|:---:|:---:|
+
 |**김지연**|**배윤관**|**신혜원**|**허상호**|**황호준**|
+|:---:|:---:|:---:|:---:|:---:|
 |데이터 입력 자동화|데이터 베이스|데이터 전처리, 깃허브|FAQ, 데이터 시각화|FAQ, 데이터 시각화|
 
 
@@ -46,7 +46,6 @@ row, columns
    <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
    <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
    <img src="https://img.shields.io/badge/streamlit%20-%23FF0000.svg?style=for-the-badge&logo=streamlit&logoColor=white">
-   
    <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
    
   
