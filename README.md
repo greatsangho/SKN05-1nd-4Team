@@ -4,15 +4,8 @@
  
 **1. 팀 소개**
 - 팀명
-  - 작성 필요
- 예시)
-카운트카 (CountCar)
-휠스탯 (WheelsStat)
-오토인사이트 (AutoInsight)
-모터데이터 (MotorData)
- null
-pandas
-row, columns
+  - Fundas
+    "노력하는 자는 즐기는 자를 이길 수 없다!"
  
 - 팀원
 
