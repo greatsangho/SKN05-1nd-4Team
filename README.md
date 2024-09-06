@@ -538,7 +538,8 @@ if st.button("Search"):
 ```
  
 **6. 수행결과(테스트/시연 페이지)**
-    
+
+![화면 캡처 2024-09-06 145259](https://github.com/user-attachments/assets/35c9967a-2ff7-439a-b4ba-f8b6dd17846d)    
 <img width="1456" alt="2024-09-06_14 30 41" src="https://github.com/user-attachments/assets/0e3920ca-8401-4ebc-8474-3b60a32babe3">
 <img width="1465" alt="2024-09-06_14 30 51" src="https://github.com/user-attachments/assets/d11487b8-5e67-443a-9bf5-464788a6e24a">
 <img width="1449" alt="2024-09-06_14 30 15" src="https://github.com/user-attachments/assets/29fa8cf1-d592-488a-8c22-8630ea36c83a">
