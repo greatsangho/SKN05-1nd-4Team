@@ -37,6 +37,7 @@
    <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
    <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
    <img src="https://img.shields.io/badge/streamlit%20-%23FF0000.svg?style=for-the-badge&logo=streamlit&logoColor=white">
+   
    <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
    
   
@@ -233,6 +234,191 @@ def Insert_data(filename:str, update:list=None):
 
 Insert_data('car.csv')
 ```
+
+****데이터 자동 입력****
+
+```python
+from selenium import webdriver
+import os
+import pandas as pd
+from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
+import pymysql
+import pandas as pd
+from sqlalchemy import create_engine
+
+wd = webdriver.Chrome()
+wd.get('https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=58&hFormId=1244&hSelectId=1244&hPoint=00&hAppr=1&hDivEng=&oFileName=&rFileName=&midpath=&sFormId=1244&sStart=2015&sEnd=2023&sStyleNum=562&settingRadio=xlsx')
+
+element = wd.find_element(By.XPATH, '//*[@id="main"]/div/div[3]/div[1]/div/div[2]/div[2]/div/dl/dd[1]/ul/li[1]/a/em')
+wd.execute_script("arguments[0].click();", element)
+
+html = wd.page_source
+soup = BeautifulSoup(html,'html.parser')
+
+download_folder = os.path.expanduser('~/Downloads')
+file_name = soup.select('#main > div > div.contents-wrap > div.contents > div > div:nth-child(2) > div.mu-accordion-body > div > dl > dd:nth-child(2) > ul > li:nth-child(1) > a > em')[0].text[2:]
+file_name = file_name.replace(' ','_')
+file_path = os.path.join(download_folder, file_name)
+
+try:
+    df = pd.read_excel(file_path,sheet_name ='19.연도별 자동차 등록현황',engine ='openpyxl', header = [2])
+    print("파일이 성공적으로 읽혔습니다.")
+    print(df.head()) 
+except FileNotFoundError:
+    print("지정한 파일이 존재하지 않습니다.")
+except Exception as e:
+    print(f"파일을 읽는 중 오류가 발생했습니다: {e}")
+
+year_data = df.iloc[:,:1]
+year_columns = ['year']
+year_data.columns = year_columns
+#year_data 데이터 인덱스 생성
+year_data2 = year_data.reset_index(drop=True)
+year_data2 = year_data2.reset_index().rename(columns={'index':'year_id'})
+
+def create_database(database_name, password, username = 'root', host = 'localhost'):
+
+    connection = pymysql.connect(
+    host = host,
+    user = username, 
+    password = password)
+    
+    with connection.cursor() as cursor:
+        cursor.execute(f"create database {database_name}")
+    connection.commit()
+    connection.close()
+
+def get_connection(database_name, password, username = 'root', host = 'localhost'):
+
+    conn = pymysql.connect(
+        host = host,
+        user = username,
+        password = password,
+        database = database_name,
+        charset = 'utf8mb4',
+        cursorclass = pymysql.cursors.DictCursor
+    )
+    return conn
+    
+def Insert_data(file, table_name:str, PK:str, database_name, password, username = 'root', host = 'localhost'):
+    engine = create_engine(f'mysql+pymysql://{username}:{password}@{host}/{database_name}')
+    file.to_sql(f'{table_name}', con=engine, if_exists='replace', index=False)
+    engine.dispose()
+
+    connection = get_connection(database_name, password)
+    if PK != '':
+        with connection.cursor() as cursor:
+            cursor.execute(f"ALTER TABLE {table_name} ADD PRIMARY KEY ({PK});")
+        connection.commit()
+        connection.close()
+        
+'''
+주의사항!!!
+'''
+
+database_name = 'carfirst'
+password = '1234'    # 각자 입력!!!
+
+create_database(database_name, password)
+
+Insert_data(year_data2, 'year', 'year_id', database_name, password)
+data2 = pd.read_excel(file_path, sheet_name='09.차종별_유형별 현황',engine='openpyxl',header=[2])
+data2 = data2.dropna(how='all',axis=1)
+data2 = data2.dropna(how='all',axis=0)
+data2
+kind_data = data2.iloc[1:-1,:1]
+kind_data
+
+# # NaN 값을 제외한 리스트로 변환
+real_kind_list = kind_data['Unnamed: 0'].dropna().tolist()
+# list에 인덱스 생성 안되서 다시 바꿔줌
+kind_data=pd.DataFrame(real_kind_list) 
+#kind_data 데이터 인덱스 생성
+kind_columns = ['kind']
+kind_data.columns = kind_columns
+kind_data2 = kind_data.reset_index().rename(columns={'index':'kind_id'})
+
+Insert_data(kind_data2, 'kind', 'kind_id', database_name, password)
+df = df[['차종', 'Unnamed: 4', 'Unnamed: 8', 'Unnamed: 12', 'Unnamed: 16']]
+df = df.drop(0)
+df.columns = ['year', '승용', '승합', '화물', '특수']
+
+sum_list = []
+year_list = []
+kind_list = []
+
+# 각 행을 순회
+for i in range(len(df)):
+    year_row = df.iloc[i]
+    # 각 열을 순회
+    for j in range(len(year_row)):
+        if j>0:
+            kind_value = year_row.iloc[j]
+            # 리스트에 값 추가
+            year_list.append(i)
+            kind_list.append(j-1)
+            sum_list.append(kind_value)
+        else:
+            pass
+
+# 결과를 딕셔너리 형태로 묶기
+sum_dict = zip(year_list, kind_list, sum_list)
+sum_dict =pd.DataFrame(sum_dict)
+# 결과 출력
+print(sum_dict)
+
+column_names = ['year_id','kind_id','total']
+sum_dict.columns = column_names
+sum_dict
+
+Insert_data(sum_dict, 'year_kind_sum','', database_name, password)
+```
+
+    파일이 성공적으로 읽혔습니다.
+         차종     승용 Unnamed: 2 Unnamed: 3 Unnamed: 4     승합 Unnamed: 6 Unnamed: 7  \
+    0    년도     관용        자가용        영업용          계     관용        자가용        영업용   
+    1  2007  20714   11674085     404980   12099779  12650     999807      92492   
+    2  2008  21388   12025715     436706   12483809  13269     987448      95981   
+    3  2009  22267   12551833     449719   13023819  14177     967890      98620   
+    4  2010  22872   13124972     483925   13631769  15039     931740     102946   
+    
+      Unnamed: 8     화물  ... Unnamed: 11 Unnamed: 12    특수 Unnamed: 14  \
+    0          계     관용  ...         영업용           계    관용         자가용   
+    1    1104949  25230  ...      334584     3171351  2090       10945   
+    2    1096698  25535  ...      338711     3160338  2110       11372   
+    3    1080687  25970  ...      341745     3166512  2070       11890   
+    4    1049725  26306  ...      345805     3203808  2055       12604   
+    
+      Unnamed: 15 Unnamed: 16     합계 Unnamed: 18 Unnamed: 19 Unnamed: 20  
+    0         영업용           계     관용         자가용         영업용           계  
+    1       39063       52098  60684    15496374      871119    16428177  
+    2       39892       53374  62302    15820627      911290    16794219  
+    3       40232       54192  64484    16330410      930316    17325210  
+    4       41395       56054  66272    16901013      974071    17941356  
+    
+    [5 rows x 21 columns]
+         0  1         2
+    0    0  0  12099779
+    1    0  1   1104949
+    2    0  2   3171351
+    3    0  3     52098
+    4    1  0  12483809
+    ..  .. ..       ...
+    63  15  3    130041
+    64  16  0  21390202
+    65  16  1    694574
+    66  16  2   3726400
+    67  16  3    138025
+    
+    [68 rows x 3 columns]
+    
+
+
+```python
+```
+
+
 
 
 **FAQ**
@@ -801,4 +987,4 @@ create_database('test')
 
  
 **7. 한 줄 회고**
-    - 작성 필요
+    데이터를 찾고 
