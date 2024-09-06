@@ -5,6 +5,9 @@
 **1. 팀 소개**
 - 팀명
   - Fundas
+ 
+  ![image](https://github.com/user-attachments/assets/5c37680e-b382-4798-883f-711e2ba4c821)
+
     "노력하는 자는 즐기는 자를 이길 수 없다!"
  
 - 팀원
