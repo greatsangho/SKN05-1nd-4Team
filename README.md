@@ -7,10 +7,9 @@
   - 작성 필요
 - 팀원
 
-**신혜원**
-
-![KakaoTalk_20240906_121451675](https://github.com/user-attachments/assets/9019c838-54bf-4ece-b27d-0e4917bd4001)
-
+|![KakaoTalk_20240906_121451675](https://github.com/user-attachments/assets/9019c838-54bf-4ece-b27d-0e4917bd4001)|내용|설명|내용|설명|
+|---|---|---|---|---|
+|신혜원|테스트2|테스트3|테스트2|테스트3|
 
 
 
