@@ -4,7 +4,7 @@
  
 **1. 팀 소개**
 - 팀명
-  - Fundas
+  - # Fundas
  
   ![image](https://github.com/user-attachments/assets/5c37680e-b382-4798-883f-711e2ba4c821)
 
