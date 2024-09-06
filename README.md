@@ -5,11 +5,15 @@
 **1. 팀 소개**
 - 팀명
   - 작성 필요
- 예시) 카운트카 (CountCar)
+ 예시)
+카운트카 (CountCar)
 휠스탯 (WheelsStat)
 오토인사이트 (AutoInsight)
 모터데이터 (MotorData)
-  - 
+ null
+pandas
+row, columns
+ 
 - 팀원
 
 |이미지|이미지|![KakaoTalk_20240906_121451675](https://github.com/user-attachments/assets/9019c838-54bf-4ece-b27d-0e4917bd4001)|이미지|이미지|
@@ -626,6 +630,93 @@ engine.dispose()
 
 **조회시스템**
 
+import streamlit as st
+import pandas as pd
+import pymysql
+
+# 데이터베이스에서 year와 kind 값을 가져오는 함수
+def get_years_and_kinds(username='root', password='1234', host='localhost'):
+    database_name = "carfirst"  # 고정된 데이터베이스 이름
+    connection = pymysql.connect(
+        host=host,
+        user=username,
+        password=password,
+        database=database_name,
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    
+    # 연도 데이터 가져오기
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT DISTINCT year FROM year")
+        years = cursor.fetchall()
+        year_list = [row['year'] for row in years]
+    
+    # 종류 데이터 가져오기
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT DISTINCT kind FROM kind")
+        kinds = cursor.fetchall()
+        kind_list = [row['kind'] for row in kinds]
+    
+    connection.close()
+    
+    return year_list, kind_list
+
+# 검색 함수 정의
+def search(year, kind, username='root', password='1234', host='localhost'):
+    database_name = "carfirst"  # 고정된 데이터베이스 이름
+    connection = pymysql.connect(
+        host=host,
+        user=username,
+        password=password,
+        database=database_name,
+        cursorclass=pymysql.cursors.DictCursor
+    )
+    
+    query = """
+    SELECT y.year, k.kind, s.total 
+    FROM year_kind_sum s 
+    INNER JOIN year y ON s.year_id = y.year_id
+    INNER JOIN kind k ON s.kind_id = k.kind_id
+    WHERE (%s = 'All' OR y.year = %s)
+    AND (%s = 'All' OR k.kind = %s)
+    """
+    
+    with connection.cursor() as cursor:
+        cursor.execute(query, (year, year, kind, kind))
+        result = cursor.fetchall()
+
+    connection.close()
+
+    # DataFrame으로 변환
+    result_df = pd.DataFrame(result, columns=['year', 'kind', 'total'])
+
+    return result_df
+
+# Streamlit UI
+st.title("Data Search App")
+
+# year와 kind 데이터를 불러와서 선택 옵션으로 제공
+year_list, kind_list = get_years_and_kinds()
+
+# "All" 옵션을 추가
+year_list = ["All"] + year_list
+kind_list = ["All"] + kind_list
+
+# 사용자가 선택할 수 있는 선택 박스
+year = st.selectbox("Select Year:", year_list)
+kind = st.selectbox("Select Kind:", kind_list)
+
+# 버튼을 눌렀을 때 검색 실행
+if st.button("Search"):
+    # 검색 함수 실행 및 결과 표시
+    result = search(year, kind)
+    
+    if not result.empty:
+        st.write("Search Results:")
+        st.dataframe(result)  # 결과를 테이블 형태로 출력
+    else:
+        st.write("No results found.")
+
 
  
 **6. 수행결과(테스트/시연 페이지)**
@@ -634,4 +725,9 @@ engine.dispose()
 
  
 **7. 한 줄 회고**
-    데이터를 찾고 
+    
+    기획단계에서 주제에 맞는 데이터를 찾고 무엇을 구현할지에 대한 논의 과정이 쉽게 정해져서 일사천리로 프로젝트가 진행 될 줄 알았다. 
+    개발단계에서 배운 것을 활용하고 자동화로 데이터가 입력되고 조회가 되게 만드는 과정이 생각보다 쉽지 않아 우왕좌왕, 우당탕탕 시행착오의 연속이였다.
+    그래도 중심을 잡고 각자의 과제들을 마무리 할 수 있었던 것 같다.
+    기간이 짧아서 거창하게 기획했던 수 많은 아이디어 중에 일부분만 실현이 되어 다음에 기회가 된다고 다른 아이디어도 실현 시켜 보고 싶다.
+  
