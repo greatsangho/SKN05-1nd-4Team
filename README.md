@@ -431,8 +431,7 @@ df
 
 
 
-
-
+```python
 from sqlalchemy import create_engine
 username = 'root'
 password = '1234'
@@ -446,7 +445,6 @@ df.to_sql('qna_che', con=engine, if_exists='append', index=False)
 engine.dispose()
 
 
-```python
 **조회시스템**
 
 import streamlit as st
