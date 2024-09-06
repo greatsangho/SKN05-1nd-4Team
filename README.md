@@ -51,7 +51,8 @@ row, columns
   
 **4. ERD**
    
-   ![화면 캡처 2024-09-06 103022](https://github.com/user-attachments/assets/6cc28547-be58-405b-bdda-ce84532d0fb8)
+  ![image](https://github.com/user-attachments/assets/8bfb1b61-dc31-435f-8dbf-b89b3ae335b7)
+
    
  
 **5. 주요 프로시저**
@@ -720,7 +721,10 @@ if st.button("Search"):
  
 **6. 수행결과(테스트/시연 페이지)**
     
-![화면 캡처 2024-09-06 111509](https://github.com/user-attachments/assets/a4e1cd77-7fb9-40be-b5d3-592c7e8264e3)
+<img width="1456" alt="2024-09-06_14 30 41" src="https://github.com/user-attachments/assets/0e3920ca-8401-4ebc-8474-3b60a32babe3">
+<img width="1465" alt="2024-09-06_14 30 51" src="https://github.com/user-attachments/assets/d11487b8-5e67-443a-9bf5-464788a6e24a">
+<img width="1449" alt="2024-09-06_14 30 15" src="https://github.com/user-attachments/assets/29fa8cf1-d592-488a-8c22-8630ea36c83a">
+
 
  
 **7. 한 줄 회고**
