@@ -26,7 +26,6 @@
   3) 적절한 작업 분배 및 지속적인 커뮤니케이션을 통한 협업 수행 능력 향상
   
 **3. 기술 스택**
-
    <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white">
    <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
    <img src="https://img.shields.io/badge/streamlit%20-%23FF0000.svg?style=for-the-badge&logo=streamlit&logoColor=white">
