@@ -38,8 +38,12 @@
    
  
 9. 주요 프로시저
+
+- 데이터 선택(정보)
+  ![화면 캡처 2024-09-06 112025](https://github.com/user-attachments/assets/e87cc110-40f7-43a1-8b6d-55ed7d7de33c)
+   
  
-10. 수행결과(테스트/시연 페이지)
+11. 수행결과(테스트/시연 페이지)
     
 ![화면 캡처 2024-09-06 111509](https://github.com/user-attachments/assets/a4e1cd77-7fb9-40be-b5d3-592c7e8264e3)
 
