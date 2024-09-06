@@ -57,9 +57,7 @@
 
   ![화면 캡처 2024-09-06 112025](https://github.com/user-attachments/assets/e87cc110-40f7-43a1-8b6d-55ed7d7de33c)
 
-- 데이터 가공
-  
-  ![화면 캡처 2024-09-06 113001](https://github.com/user-attachments/assets/a4a5bf0a-7ff9-440e-ae70-4fa35ebabc9f)
+- 데이터 수집 및 가공, 기획
 
  - DB 구축
 
