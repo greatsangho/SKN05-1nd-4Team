@@ -6,6 +6,14 @@
 - 팀명
   - 작성 필요
 - 팀원
+
+신혜원
+
+![KakaoTalk_20240906_121451675](https://github.com/user-attachments/assets/9019c838-54bf-4ece-b27d-0e4917bd4001)
+
+
+
+
   
  
 **2. 프로젝트 개요**
