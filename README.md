@@ -31,17 +31,13 @@
    <img src="https://img.shields.io/badge/streamlit%20-%23FF0000.svg?style=for-the-badge&logo=streamlit&logoColor=white">
    <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
    
- 
-5. WBS
- 
-6. 요구사항 명세서
- 
-**7. ERD**
+  
+**4. ERD**
    
    ![화면 캡처 2024-09-06 103022](https://github.com/user-attachments/assets/6cc28547-be58-405b-bdda-ce84532d0fb8)
    
  
-**9. 주요 프로시저**
+**5. 주요 프로시저**
 
 - 데이터 선택(정보)
 
@@ -791,10 +787,10 @@ create_database('test')
 ```
 
  
-**11. 수행결과(테스트/시연 페이지)**
+**6. 수행결과(테스트/시연 페이지)**
     
 ![화면 캡처 2024-09-06 111509](https://github.com/user-attachments/assets/a4e1cd77-7fb9-40be-b5d3-592c7e8264e3)
 
  
-**12. 한 줄 회고**
+**7. 한 줄 회고**
     - 작성 필요
