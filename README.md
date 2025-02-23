@@ -1,6 +1,118 @@
 # SKN05-1nd-4Team
 
- SK네트웍스 AI과정 1차 프로젝트
+## Enhanced README File (English and Korean)
+
+Below is a more readable and structured version of the README file provided. The explanation is first presented in **English**, followed by its **Korean translation**.
+
+---
+
+### English Explanation
+
+---
+
+### SKN05-1nd-4Team  
+**SK Networks AI Course - 1st Project**
+
+---
+
+### **How to Run the Files**
+1. Download and combine all project files into a single folder.
+2. Run `1_data_to_db.py` to create the SQL database for vehicle registration data.
+3. Execute `2_Car_crowl.ipynb` to generate the FAQ table.
+4. Launch the web application using:  
+   ```bash
+   streamlit run 3_FAQ.py
+   ```
+
+---
+
+### **1. Team Introduction**
+#### Team Name: **Fundas**  
+*"Those who enjoy their work cannot be beaten by those who merely try!"*
+
+#### Team Members and Roles:
+| **Name**      | **Role**                              |
+|---------------|---------------------------------------|
+| 김지연 (Ji-Yeon Kim) | Data Automation                   |
+| 배윤관 (Yun-Kwan Bae) | Database Management              |
+| 신혜원 (Hye-Won Shin) | Data Preprocessing & GitHub       |
+| 허상호 (Sang-Ho Heo)  | FAQ Development & Data Visualization |
+| 황호준 (Ho-Jun Hwang) | FAQ Development & Data Visualization |
+
+---
+
+### **2. Project Overview**
+#### Project Title:  
+**Implementation of a Vehicle Registration Lookup and FAQ System Using MySQL**
+
+#### Project Description:  
+This project collects vehicle registration data, stores it in a MySQL database, and provides tools to query specific data as well as an FAQ feature.
+
+#### Why This Project?  
+1. Easily retrieve desired data related to vehicle registration.  
+2. Analyze overall trends using graphs for policymaking in the automotive sector.
+
+#### Goals:  
+1. Review and apply learned skills (e.g., functions, web scraping, databases).  
+2. Improve data collection and analysis abilities.  
+3. Enhance teamwork through effective task distribution and communication.
+
+---
+
+### **3. Technology Stack**
+- **Python** python  
+- **MySQL** mysql  
+- **Streamlit** streamlit  
+- **GitHub** github
+
+---
+
+### **4. Database Design (ERD)**  
+ERD Diagram
+
+---
+
+### **5. Key Procedures**
+
+#### Data Collection and Processing:
+The project uses Python scripts to scrape vehicle registration data from government websites, preprocess it, and store it in a MySQL database.
+
+#### Automated Data Input Example:
+```python
+from selenium import webdriver
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Example of scraping vehicle registration data
+wd = webdriver.Chrome()
+wd.get('https://stat.molit.go.kr/portal/cate/statMetaView.do?...')
+
+# Process data into a structured format
+df = pd.read_excel("downloaded_file.xlsx", sheet_name="Vehicle Data")
+engine = create_engine('mysql+pymysql://root:1234@localhost/carfirst')
+df.to_sql('vehicle_data', con=engine, if_exists='replace', index=False)
+```
+
+#### FAQ System:
+The FAQ system scrapes frequently asked questions from automotive websites using Selenium and BeautifulSoup, processes them into structured categories, and stores them in a MySQL table.
+
+---
+
+### **6. Results (Testing/Live Demo Screenshots)**
+
+![화면 캡처 2024-09-06 145259](https://github.com/user-attachments/assets/35c9967a-2ff7-439a-b4ba-f8b6dd17846d)    
+<img width="1456" alt="2024-09-06_14 30 41" src="https://github.com/user-attachments/assets/0e3920ca-8401-4ebc-8474-3b60a32babe3">
+<img width="1449" alt="2024-09-06_14 30 15" src="https://github.com/user-attachments/assets/29fa8cf1-d592-488a-8c22-8630ea36c83a">
+<img width="1465" alt="2024-09-06_14 30 51" src="https://github.com/user-attachments/assets/d11487b8-5e67-443a-9bf5-464788a6e24a">
+
+---
+
+### **7. Reflection**
+During the planning phase, we thought the project would progress smoothly since we quickly aligned on the topic and goals. However, implementing automation and integrating features proved more challenging than expected, leading to trial-and-error iterations. Despite these challenges, we successfully completed our tasks through teamwork and perseverance. Although we couldn’t implement all our ambitious ideas due to time constraints, we hope to revisit them in future projects.
+
+---
+
+### Korean Explanation
 
 **파일 실행방법**
  1) 폴더 파일 전부 다운 및 합치기
