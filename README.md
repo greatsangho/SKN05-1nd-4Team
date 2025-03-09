@@ -1,8 +1,6 @@
 # SKN05-1st-4Team
 
-## Enhanced README File (English and Korean)
-
-Below is a more readable and structured version of the README file provided. The explanation is first presented in **English**, followed by its **Korean translation**.
+The explanation is first presented in **English**, followed by its **Korean translation**.
 
 ---
 
