@@ -34,7 +34,7 @@ The explanation is first presented in **English**, followed by its **Korean tran
 | 김지연 (Ji-Yeon Kim) | Data Automation                   |
 | 배윤관 (Yun-Kwan Bae) | Database Management              |
 | 신혜원 (Hye-Won Shin) | Data Preprocessing & GitHub       |
-| 허상호 (Sang-Ho Heo)  | FAQ Development & Data Visualization |
+| 허상호 (Sang-Ho Heo)  | FAQ Development & Data Visualization & GitHub |
 | 황호준 (Ho-Jun Hwang) | FAQ Development & Data Visualization |
 
 ---
@@ -123,7 +123,7 @@ During the planning phase, we thought the project would progress smoothly since 
 
 |**김지연**|**배윤관**|**신혜원**|**허상호**|**황호준**|
 |:---:|:---:|:---:|:---:|:---:|
-|데이터 입력 자동화|데이터 베이스|데이터 전처리, 깃허브|FAQ, 데이터 시각화|FAQ, 데이터 시각화|
+|데이터 입력 자동화|데이터 베이스|데이터 전처리, 깃허브|FAQ, 데이터 시각화, 깃허브|FAQ, 데이터 시각화|
 
 
   
